@@ -33,12 +33,12 @@ public class FormTrabajador extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         lbl_cod = new javax.swing.JTextField();
         lbl_nombre = new javax.swing.JTextField();
-        lbl_pagoHora = new javax.swing.JTextField();
-        lbl_horasT = new javax.swing.JTextField();
+        lbl_apellido = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cbo_cargo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,9 +57,16 @@ public class FormTrabajador extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre:");
 
-        jLabel3.setText("Pago x hora:");
+        jLabel3.setText("Apellido");
 
-        jLabel4.setText("Horas trabajadas:");
+        jLabel4.setText("Cargo:");
+
+        cbo_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jefe", "Analista", "Programador", "Soporte" }));
+        cbo_cargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_cargoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,8 +89,8 @@ public class FormTrabajador extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lbl_cod, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                                     .addComponent(lbl_nombre)
-                                    .addComponent(lbl_pagoHora)
-                                    .addComponent(lbl_horasT)))))
+                                    .addComponent(lbl_apellido)
+                                    .addComponent(cbo_cargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(jButton1)))
@@ -102,12 +109,12 @@ public class FormTrabajador extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_pagoHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_horasT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(cbo_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -121,16 +128,25 @@ public class FormTrabajador extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int codigo = Integer.parseInt(lbl_cod.getText());
         String nombre = lbl_nombre.getText();
-        double pagoxHora = Double.parseDouble(lbl_pagoHora.getText());
-        int horasT = Integer.parseInt(lbl_horasT.getText());
+        String apellido = lbl_apellido.getText();
+        String cargo = cbo_cargo.getSelectedItem().toString();
         
-        Clases.Trabajador t1 = new Clases.Trabajador(codigo, nombre, pagoxHora, horasT);
+        Trabajador t1 = new Trabajador(codigo, nombre, apellido, cargo);
         
         txta_resultado.append("Nombre del trabajador: " + t1.mostrarNombre() +  "\n");
-        txta_resultado.append("El salario bruto es: " + t1.salarioBruto() + "\n");
+        txta_resultado.append("Apellido del trabajador: " + t1.mostrarApellido()+ "\n");
+        txta_resultado.append("El sueldo bruto es: " + t1.sueldoBruto() + "\n");
         txta_resultado.append("El dscto es: " + t1.dscto()+ "\n");
-        txta_resultado.append("El salario neto es: " + t1.SalarioNeto() + "\n");
+        txta_resultado.append("El sueldo neto es: " + t1.SueldoNeto()+ "\n");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbo_cargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_cargoActionPerformed
+        // TODO add your handling code here:
+        cbo_cargo.addItem("Jefe");
+        cbo_cargo.addItem("Analista");
+        cbo_cargo.addItem("Programador");
+        cbo_cargo.addItem("Soporte");
+    }//GEN-LAST:event_cbo_cargoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,16 +184,16 @@ public class FormTrabajador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbo_cargo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField lbl_apellido;
     private javax.swing.JTextField lbl_cod;
-    private javax.swing.JTextField lbl_horasT;
     private javax.swing.JTextField lbl_nombre;
-    private javax.swing.JTextField lbl_pagoHora;
     private javax.swing.JTextArea txta_resultado;
     // End of variables declaration//GEN-END:variables
 }

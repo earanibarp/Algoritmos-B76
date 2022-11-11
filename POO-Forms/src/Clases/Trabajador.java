@@ -2,29 +2,48 @@
 package Clases;
 
 public class Trabajador {
-    int codigo;
-    String nombre;
-    double pagoxHora;
-    int horasT;
-    
-    public Trabajador (int _codigo, String _nombre, double _pagoxHora, int _horasT){
-        this.codigo = _codigo;
-        this.nombre = _nombre;
-        this.pagoxHora = _pagoxHora;
-        this.horasT = _horasT;
+    private int codigo;
+    private String nombre;
+    private String apellido;
+    private String cargo;
+
+    public Trabajador(int codigo, String nombre, String apellido, String cargo) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cargo = cargo;
     }
+
     public String mostrarNombre(){
         return nombre;
     }
-    public double salarioBruto(){
-        return pagoxHora * horasT;
+    
+    public String mostrarApellido(){
+        return apellido;
+    }
+    
+    public int sueldoBruto(){
+        if (cargo.equals("Jefe")){
+            return 5000;
+        }
+        else if (cargo.equals("Analista")){
+            return 4000;
+        }
+        else if (cargo.equals("Programador")){
+            return 3000;
+        }
+        else if (cargo.equals("Soporte")){
+            return 2000;
+        }
+        else
+            return 0;
     }
     
     public double dscto(){
-        return salarioBruto() * 0.13;
+        return sueldoBruto() * 0.1;
     }
     
-    public double SalarioNeto(){
-        return salarioBruto() - dscto();
+    public double SueldoNeto(){
+        return sueldoBruto() - dscto();
     }
 }

@@ -42,8 +42,8 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lbl_cod" alignment="0" pref="252" max="32767" attributes="0"/>
                                   <Component id="lbl_nombre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lbl_pagoHora" max="32767" attributes="0"/>
-                                  <Component id="lbl_horasT" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbl_apellido" max="32767" attributes="0"/>
+                                  <Component id="cbo_cargo" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -72,13 +72,13 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbl_pagoHora" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_apellido" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbl_horasT" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbo_cargo" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -117,9 +117,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="lbl_nombre">
     </Component>
-    <Component class="javax.swing.JTextField" name="lbl_pagoHora">
-    </Component>
-    <Component class="javax.swing.JTextField" name="lbl_horasT">
+    <Component class="javax.swing.JTextField" name="lbl_apellido">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -133,13 +131,31 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pago x hora:"/>
+        <Property name="text" type="java.lang.String" value="Apellido"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Horas trabajadas:"/>
+        <Property name="text" type="java.lang.String" value="Cargo:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbo_cargo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Jefe"/>
+            <StringItem index="1" value="Analista"/>
+            <StringItem index="2" value="Programador"/>
+            <StringItem index="3" value="Soporte"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbo_cargoActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
