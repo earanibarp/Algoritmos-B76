@@ -22,6 +22,7 @@ public class Main {
         llenarPoligono();
 
         //mostrar datos
+        mostrarResultados();
     }
 
     public static void llenarPoligono() {
@@ -37,14 +38,48 @@ public class Main {
             } while (opc < 1 || opc > 2);
 
             switch (opc) {
-                case 1:
+                case 1: llenarTriangulo();
                     break;
-                case 2:
+                case 2: llenarRectangulo();
                     break;
             }
-            System.out.println("\n¿Deseas ingresas ingresar otro polígono? (S/N");
+            System.out.println("\n¿Deseas ingresar ingresar otro polígono? (S/N)");
             rpta = entradaT.next().charAt(0);
             
         } while (rpta == 'S' || rpta == 's');
+    }
+    
+    public static void llenarTriangulo(){
+        double lado1, lado2, lado3;
+        
+        System.out.println("\nIngresa el primer lado del triángulo: ");
+        lado1 = entradaT.nextDouble();
+        System.out.println("\nIngresa el segundo lado del triángulo: ");
+        lado2 = entradaT.nextDouble();
+        System.out.println("\nIngresa el tercer lado del triángulo: ");
+        lado3 = entradaT.nextDouble();
+        
+        Triangulo triangulo = new Triangulo(lado1, lado2, lado3);
+        poligono.add(triangulo);
+    }
+    
+    public static void llenarRectangulo(){
+        double base, altura;
+        
+        System.out.println("\nIngresa la base del rectángulo: ");
+        base = entradaT.nextDouble();
+        System.out.println("\nIngresa la altura del rectángulo: ");
+        altura = entradaT.nextDouble();
+        
+        Rectangulo rectangulo = new Rectangulo(base, altura);
+        poligono.add(rectangulo);
+    }
+    
+    public static void mostrarResultados(){
+        for (Poligono pol: poligono){
+            System.out.println(pol.toString());
+            System.out.println("Area: " + pol.area());
+            System.out.println("");
+        }
     }
 }
